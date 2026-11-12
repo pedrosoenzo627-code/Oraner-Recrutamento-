@@ -1,58 +1,56 @@
-# Como participar da Oraner
+# Como conhecer e acompanhar a Oraner
 
 Obrigado pelo interesse em conhecer a Oraner Technologies.
 
-## 1. Apresente-se
+A iniciativa ainda está organizando seus projetos e suas condições para receber contribuições externas. Este documento explica como acompanhar o trabalho sem assumir tarefas ou compromissos antes da hora.
 
-No servidor da comunidade, diga:
-- Como gostaria de ser chamado.
-- Qual área ou projeto despertou seu interesse.
-- Quais linguagens, ferramentas ou tecnologias conhece ou está estudando.
-- Se prefere desenvolver, documentar, testar, revisar ou orientar.
+## 1. Conheça os projetos
 
-Um portfólio ou repositório público é opcional. Não é necessário enviar documentos pessoais.
+Leia:
+- [Projetos](PROJETOS.md)
+- [Estado técnico dos projetos](ESTADO-TECNICO-DOS-PROJETOS.md)
+- [Departamentos planejados](DEPARTAMENTOS.md)
 
-## 2. Converse sobre o escopo
+Os documentos distinguem objetivos, tecnologias em avaliação e decisões que ainda não foram tomadas.
 
-Antes de iniciar:
-- Defina o objetivo da tarefa.
-- Combine o que será entregue.
-- Estime o esforço de forma realista.
-- Identifique dependências e ferramentas necessárias.
-- Combine como o trabalho será revisado.
+## 2. Apresente interesse sem enviar dados sensíveis
 
-Não aceite tarefas que não compreenda ou que ultrapassem sua disponibilidade.
+Para uma conversa inicial, basta explicar de forma breve:
+- Qual projeto chamou sua atenção.
+- Quais tecnologias você está aprendendo ou conhece.
+- Que tipo de assunto gostaria de estudar.
 
-## 3. Faça contribuições pequenas
+Portfólio ou repositório público é opcional. Não envie documentos pessoais, endereço, dados bancários, senhas, tokens ou informações privadas.
 
-Quando houver uma tarefa aprovada:
-1. Leia a documentação do projeto.
-2. Trabalhe em uma branch própria.
-3. Faça alterações pequenas e explicáveis.
-4. Teste o que for possível.
-5. Abra um Pull Request com descrição e evidências.
-6. Aguarde revisão antes de integrar.
+## 3. Não comece tarefas externas ainda
 
-Não envie segredos, arquivos .env, tokens ou credenciais no código.
+A Oraner não está anunciando vagas. Não assuma tarefas, prazos, plantões, horários, metas ou responsabilidades em nome da iniciativa.
+
+Antes de abrir contribuições externas, será necessário definir e publicar:
+- A licença do projeto e as regras de contribuição.
+- Como autoria e direitos de uso serão tratados.
+- O processo de revisão e aceitação de mudanças.
+- Os responsáveis por segurança, privacidade e manutenção.
+- As condições juridicamente adequadas para a participação.
 
 ## 4. Pessoas iniciantes
 
-Pessoas iniciantes são bem-vindas para aprender, documentar, testar protótipos e contribuir com tarefas adequadas à sua experiência. Perguntar e pedir revisão faz parte do processo.
+Pessoas iniciantes podem acompanhar a documentação e estudar as tecnologias. Não é necessário provar experiência, compartilhar dados pessoais ou assumir compromissos para conhecer os projetos.
 
 ## 5. Pessoas experientes
 
-Desenvolvedores seniores e profissionais podem contribuir com revisão, mentoria, arquitetura, planejamento técnico ou implementação, conforme disponibilidade e interesse.
+Pessoas experientes podem compartilhar orientação geral ou indicar boas práticas, sem assumir responsabilidade por sistemas, prazos ou entregas da Oraner. Qualquer colaboração técnica organizada dependerá das condições mencionadas acima.
 
-## 6. Condições
+## 6. Situação financeira e jurídica
 
-A Oraner ainda não possui orçamento para salários ou pagamentos. A participação neste momento é voluntária, opcional e sem remuneração garantida. Não existe promessa de contratação, pagamento futuro ou participação societária.
+A Oraner não tem orçamento para salários ou contratação neste momento. Isso não significa que seja apropriado transferir tarefas de uma atividade empresarial para pessoas sem remuneração.
 
-Ninguém deve pagar para participar, comprar equipamentos ou compartilhar credenciais pessoais.
+A Lei nº 9.608/1998 define o serviço voluntário para entidades públicas e instituições privadas sem fins lucrativos, e prevê termo de adesão com objeto e condições. A aplicação dessa lei à situação concreta da Oraner não está estabelecida neste repositório e precisa de orientação jurídica antes de qualquer programa de voluntariado. Consulte [o texto atualizado da lei na Câmara dos Deputados](https://www2.camara.leg.br/legin/fed/lei/1998/lei-9608-18-fevereiro-1998-365398-normaatualizada-pl.html).
 
 ## 7. Menores de idade
 
-A participação de menores deve ser adequada à idade, com conhecimento e acompanhamento do responsável legal. Não solicitamos que menores assinem contratos ou assumam compromissos legais por conta própria. Qualquer acordo formal deve ser tratado com o responsável e conforme a legislação aplicável.
+Menores devem conversar com a iniciativa somente com conhecimento e acompanhamento de seu responsável legal. Não devem assinar contratos, aceitar obrigações, fornecer documentos ou assumir compromissos em nome da Oraner por conta própria. O responsável deve acompanhar comunicações e revisar qualquer proposta formal.
 
-## 8. Encerrar a colaboração
+## 8. Encerrar o contato
 
-Qualquer pessoa pode pausar ou encerrar sua participação. Avise a equipe para que tarefas e acessos possam ser organizados com segurança.
+Qualquer pessoa pode deixar de acompanhar a iniciativa a qualquer momento. Não há obrigação de responder, participar ou continuar uma conversa.
