@@ -71,12 +71,13 @@ Conjunto de princípios visuais e componentes de interface da Oraner.
 
 ---
 
-## Como propor uma contribuição
+## Situação de contribuições externas
 
-Abra uma conversa no Discord com:
-1. Projeto de interesse.
-2. Problema ou oportunidade que identificou.
-3. Experiência ou tecnologias que pretende utilizar.
-4. Escopo pequeno e verificável para começar.
+Este documento é informativo. A Oraner ainda não está recebendo tarefas ou contribuições externas organizadas. Antes de habilitar Pull Requests de pessoas externas, será necessário definir e publicar licença, regras de contribuição, atribuição de autoria, direitos de uso, revisão técnica, segurança e condições juridicamente adequadas.
 
-Não comece a implementar uma tarefa sem combinar o escopo com a equipe.
+Pessoas interessadas podem estudar as tecnologias e acompanhar a documentação sem assumir tarefas, prazos ou compromissos. Não envie código de terceiros, segredos, credenciais ou dados reais de usuários.
+
+Consulte também:
+- [Estado técnico dos projetos](ESTADO-TECNICO-DOS-PROJETOS.md)
+- [Plano de crescimento](PLANO-DE-CRESCIMENTO.md)
+- [Privacidade e contribuições](PRIVACIDADE-E-CONTRIBUICOES.md)
