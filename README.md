@@ -1,117 +1,92 @@
 # ORANER TECHNOLOGIES
-### Recrutamento de colaboradores e comunidade técnica
+### Projetos, documentação e interesse em colaboração técnica
 
 **Inovação • Desempenho • Liberdade**
 
-Bem-vindo ao repositório de recrutamento da **Oraner Technologies**. Este espaço apresenta a iniciativa, seus projetos de software e as áreas nas quais buscamos pessoas interessadas em colaborar.
+Bem-vindo ao repositório informativo da **Oraner Technologies**. Este espaço apresenta a iniciativa, seus projetos em planejamento e desenvolvimento, as áreas técnicas que poderão fazer parte de sua estrutura e os cuidados necessários antes de qualquer colaboração externa.
 
-> **Transparência:** a Oraner está em fase inicial e ainda não possui orçamento para salários ou pagamentos. Neste momento, buscamos colaboração voluntária, sem remuneração garantida. Leia a seção [Condições de participação](#-condições-de-participação) antes de demonstrar interesse.
+> **Transparência:** a Oraner está em fase inicial e não possui orçamento para salários ou contratações neste momento. Este repositório **não anuncia vagas de emprego nem solicita trabalho gratuito**. A possibilidade de receber contribuições externas será avaliada com orientação adequada sobre situação jurídica, licenças, autoria, privacidade e proteção de participantes.
 
 ---
 
 ## 1. Sobre a Oraner
 
-A Oraner é uma iniciativa independente de tecnologia que pretende pesquisar, projetar e desenvolver sistemas operacionais, aplicativos e experiências de software para diferentes dispositivos.
+A Oraner é uma iniciativa de tecnologia que pretende pesquisar, projetar e desenvolver sistemas operacionais, aplicativos e experiências de software para diferentes dispositivos.
 
-Nosso objetivo é construir uma base técnica consistente, documentada e sustentável, evoluindo os projetos por etapas e sem apresentar ideias em desenvolvimento como produtos já finalizados.
+Nosso objetivo é construir uma base técnica consistente, documentada e sustentável, evoluindo os projetos por etapas e sem apresentar ideias em desenvolvimento como produtos finalizados.
 
 ## 2. Projetos
 
-| Projeto | Descrição | Base / direção técnica |
+| Projeto | Objetivo | Direção técnica atual |
 |---|---|---|
-| **OraOS 1** | Sistema para smartphones da Oraner. | Android Open Source Project (AOSP), sujeito à compatibilidade de hardware e licenças necessárias. |
-| **OraBook OS** | Sistema para computadores e notebooks. | Linux e ferramentas do ecossistema GNU/Linux. |
-| **OnWea** | Iniciativa de plataforma de software para dispositivos vestíveis. | Arquitetura e plataforma ainda em avaliação. |
-| **OraStore** | Conceito de loja para descobrir e distribuir aplicativos compatíveis. | Aplicativo e serviços próprios, em planejamento. |
-| **OraCam** | Aplicativo de câmera para dispositivos compatíveis. | Android Camera APIs e recursos de hardware suportados. |
-| **OraCloud** | Iniciativa de serviços e infraestrutura em nuvem. | Arquitetura, segurança e custos ainda em estudo. |
-| **OraUI** | Interface e componentes visuais da família de produtos. | Design system e implementação conforme cada plataforma. |
+| **OraOS 1** | Sistema para smartphones. | Android Open Source Project (AOSP); compatibilidade depende de hardware, drivers, firmware e licenças. |
+| **OraBook OS** | Sistema para computadores e notebooks. | Tecnologias Linux e ecossistema GNU/Linux. |
+| **OnWea** | Plataforma de software para dispositivos vestíveis. | Plataforma e arquitetura ainda em avaliação. |
+| **OraStore** | Catálogo e distribuição de aplicativos compatíveis. | Produto e serviços em planejamento. |
+| **OraCam** | Aplicativo de câmera para dispositivos compatíveis. | APIs de câmera Android como direção inicial; compatibilidade precisa ser testada. |
+| **OraCloud** | Serviços de conta, sincronização e armazenamento. | Arquitetura, segurança e custos em estudo. |
+| **OraUI** | Linguagem visual e componentes de interface. | Design system multiplataforma em definição. |
 
-**Importante:** os nomes e objetivos acima descrevem projetos e planos. Recursos, compatibilidade, cronogramas e disponibilidade podem mudar durante a pesquisa e o desenvolvimento.
+Consulte [Projetos e direção técnica](ESTADO-TECNICO-DOS-PROJETOS.md) para ver o que está definido e o que ainda precisa ser pesquisado.
 
-## 3. Quem queremos conhecer
+## 3. Estrutura planejada
 
-Estamos abertos a conversar com pessoas de diferentes níveis de experiência, incluindo estudantes, desenvolvedores iniciantes, colaboradores experientes e profissionais seniores interessados em mentoria ou revisão técnica.
+A estrutura organizacional está documentada em [Departamentos](DEPARTAMENTOS.md). Ela é um planejamento futuro, não significa que existam 14 equipes ou vagas abertas.
 
-Áreas de interesse:
+As áreas de maior prioridade técnica para a fase inicial são:
+- Software e sistemas.
+- Engenharia e pesquisa de hardware.
+- Design e experiência de usuário.
+- Qualidade, testes e documentação.
 
-- Desenvolvimento Android, Kotlin, Java e AOSP.
-- Linux, C, C++, shell, sistemas e ferramentas de baixo nível.
-- Desenvolvimento de aplicativos e interfaces.
-- Backend, APIs, bancos de dados e serviços em nuvem.
-- UI/UX, design systems, identidade visual e acessibilidade.
-- Testes, qualidade, documentação e revisão de código.
-- Arquitetura de software, planejamento técnico e mentoria.
+## 4. Situação atual e participação
 
-Não é necessário conhecer todas as tecnologias. Valorizamos comunicação respeitosa, documentação, curiosidade, responsabilidade e colaboração.
+A Oraner ainda está organizando seus projetos, sua estrutura e suas condições para receber contribuições externas. Não há orçamento para salários, bolsas ou pagamentos.
 
-## 4. Como participar
+**Não estamos anunciando posições voluntárias nem pedindo que pessoas executem tarefas de operação da iniciativa sem remuneração.** A possibilidade de contribuições independentes em projetos de código aberto só deverá ser aberta após definir publicamente o repositório, a licença, as regras de contribuição, a titularidade dos direitos e os cuidados jurídicos aplicáveis.
 
-1. Leia os documentos deste repositório.
-2. Entre em contato pelo servidor da comunidade Oraner no Discord.
-3. Apresente a área em que gostaria de contribuir e as tecnologias que conhece ou está estudando.
-4. Se quiser, compartilhe um portfólio, projeto demonstrável ou repositório público.
-5. Converse sobre escopo, disponibilidade e expectativas antes de aceitar qualquer tarefa.
+Até lá, pessoas interessadas podem conhecer a documentação e enviar perguntas gerais, sem assumir tarefas ou compromissos.
 
-Não é necessário enviar currículo com dados pessoais sensíveis. Um pequeno resumo técnico já é suficiente para iniciar uma conversa.
+## 5. Como trabalhamos com tecnologia
 
-## 5. Condições de participação
+Quando um projeto estiver preparado para contribuições externas:
+- As regras e a licença do repositório deverão estar publicadas antes da primeira contribuição.
+- Mudanças deverão ser propostas por Pull Requests e revisadas.
+- Cada contribuição deverá ter escopo claro e ser feita por decisão livre da própria pessoa.
+- Não serão solicitados horários fixos, disponibilidade obrigatória ou exclusividade.
+- Autoria, licença, direitos de uso e responsabilidades deverão estar claros antes da integração.
+- Não compartilhe senhas, tokens, chaves privadas, arquivos `.env` ou credenciais.
 
-A Oraner **não possui orçamento disponível para salários, bolsas ou pagamentos neste momento**. Portanto, este convite é para colaboração voluntária e opcional.
+## 6. Segurança, privacidade e menores de idade
 
-- Não existe promessa de remuneração futura.
-- Não existe promessa de contratação ou participação societária.
-- Não exigimos que ninguém compre equipamentos, pague taxas ou assuma despesas para participar.
-- Cada pessoa pode recusar tarefas ou encerrar sua colaboração.
-- O tempo de contribuição deve ser combinado de forma realista e sem pressão.
-- Qualquer eventual atividade remunerada futura dependerá de recursos efetivamente disponíveis e de um acordo separado, claro e formal.
-
-A participação em projetos não deve ser confundida com vínculo empregatício. Se uma oportunidade profissional formal surgir no futuro, suas condições deverão ser avaliadas e documentadas conforme a legislação aplicável.
-
-## 6. Como trabalhamos com código
-
-- Mudanças devem ser propostas por **Pull Requests**.
-- Não envie alterações diretamente para a branch principal sem autorização.
-- Explique o problema, a solução e como testar cada mudança.
-- Documente decisões técnicas e limitações conhecidas.
-- Não compartilhe tokens, senhas, chaves privadas, arquivos `.env` ou credenciais.
-- Não use código, imagens, fontes ou bibliotecas sem verificar suas licenças.
-- Não copie dados, código ou materiais de terceiros sem autorização.
-- Acesso a repositórios privados e serviços será concedido somente quando necessário e com permissão específica.
-
-Antes de integrar contribuições, autoria, licença, direitos de uso e responsabilidades deverão ser esclarecidos por escrito. Não presuma que uma contribuição será automaticamente transferida ou licenciada à Oraner.
-
-## 7. Segurança e privacidade
-
-Nunca publique neste repositório ou no Discord:
-
-- Senhas, tokens de acesso ou chaves privadas.
-- Credenciais de Firebase, nuvem, hospedagem ou contas pessoais.
+Não publique neste repositório ou em comunidades:
+- Senhas, tokens, chaves privadas ou credenciais.
 - Documentos pessoais, endereço residencial ou dados bancários.
 - Informações confidenciais de clientes, empresas ou terceiros.
 
-Para relatar uma possível vulnerabilidade, não publique detalhes exploráveis em canais abertos. Avise a administração de forma privada e responsável.
+Não solicitamos documentos, dados sensíveis ou pagamentos para conhecer a iniciativa. Menores de idade devem contar com conhecimento e acompanhamento de seu responsável legal; nenhum acordo ou compromisso formal deve ser assumido por menores por conta própria.
 
-## 8. Respeito e ambiente de colaboração
+Leia [Privacidade e contribuições](PRIVACIDADE-E-CONTRIBUICOES.md).
 
-Esperamos comunicação respeitosa, feedback construtivo e inclusão de pessoas com diferentes níveis de experiência.
+## 7. Contato com comunidades e parcerias
 
-Não serão aceitos assédio, discriminação, ameaças, exposição de dados pessoais, pressão para trabalhar gratuitamente ou desrespeito aos limites de disponibilidade de qualquer colaborador.
+Estamos buscando orientação sobre iniciativas educacionais, comunidades de tecnologia e boas práticas de código aberto. A mensagem preparada para a Cumbuca Dev está em [Contato com a Cumbuca Dev](CONTATO-CUMBUCA-DEV.md).
 
-## 9. Documentos deste repositório
+## 8. Documentos deste repositório
 
 - [Projetos da Oraner](PROJETOS.md)
-- [Áreas de colaboração](AREAS-DE-COLABORACAO.md)
-- [Como participar](COMO-PARTICIPAR.md)
+- [Estado técnico dos projetos](ESTADO-TECNICO-DOS-PROJETOS.md)
+- [Departamentos planejados](DEPARTAMENTOS.md)
+- [Áreas de conhecimento](AREAS-DE-COLABORACAO.md)
+- [Plano de crescimento](PLANO-DE-CRESCIMENTO.md)
+- [Como conhecer a iniciativa](COMO-PARTICIPAR.md)
+- [Privacidade e contribuições](PRIVACIDADE-E-CONTRIBUICOES.md)
 - [Transparência e regras](TRANSPARENCIA-E-REGRAS.md)
-
-## 10. Contato
-
-Para demonstrar interesse, procure a equipe da Oraner pelo servidor de Discord em que este repositório foi divulgado. Informe que deseja conversar sobre colaboração e indique a área técnica de interesse.
+- [Contato com a Cumbuca Dev](CONTATO-CUMBUCA-DEV.md)
 
 ---
 
 **ORANER TECHNOLOGIES**  
 *Inovação • Desempenho • Liberdade*
 
-<sub>Este repositório é informativo. Ele não constitui oferta de emprego, contrato, promessa de remuneração, investimento ou participação societária.</sub>
+<sub>Este repositório é informativo. Não constitui oferta de emprego, contrato, promessa de remuneração, investimento ou participação societária. A participação externa dependerá de regras, licenças e orientações adequadas previamente definidas.</sub>
