@@ -42,14 +42,14 @@ export function LandingPage({ products, announcements }: { products: PublicProdu
 
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <span className="eyebrow"><span className="eyebrow-dot" /> Inovação · Desempenho · Liberdade</span>
+          <span className="eyebrow"><span className="eyebrow-dot" /> Oraner Technologies · pesquisa e desenvolvimento</span>
           <h1 id="hero-title">Tecnologia com espaço para <span>imaginar.</span></h1>
-          <p className="hero-lede">Uma iniciativa em fase inicial, explorando sistemas, software e experiências para diferentes dispositivos — com transparência sobre o que ainda está em construção.</p>
+          <p className="hero-lede">A Oraner explora software, sistemas e experiências digitais com foco em clareza, qualidade e privacidade — sempre deixando explícito o que ainda está em construção.</p>
           <div className="hero-actions">
             <a className="button-primary" href="#projetos">Conheça os projetos <ArrowDown size={16} aria-hidden="true" /></a>
             <Link className="button-secondary" href="/workplace/login">Acessar Workplace <ArrowUpRight size={16} aria-hidden="true" /></Link>
           </div>
-          <p className="hero-note">Projetos conceituais. Nenhum produto físico está disponível para venda.</p>
+          <p className="hero-note">Projetos em desenvolvimento. Disponibilidade e novidades serão anunciadas nesta página.</p>
         </div>
         <figure className="hero-visual">
           <Image src="/images/oraner-concept-device.png" alt="Conceito visual de smartphone e notebook em acabamento metálico" fill priority sizes="(max-width: 860px) 100vw, 50vw" />
@@ -164,7 +164,7 @@ export function LandingPage({ products, announcements }: { products: PublicProdu
 
       <footer className="site-footer">
         <div>
-          <div className="brand"><span className="brand-mark" aria-hidden="true">O</span><span>oraner<span className="brand-sub">TECHNOLOGIES</span></span></div>
+          <div className="brand"><span className="brand-mark" aria-hidden="true">O</span><span>Oraner<span className="brand-sub">TECHNOLOGIES</span></span></div>
           <p className="footer-copy">© {new Date().getFullYear()} Oraner Technologies · Projetos em desenvolvimento</p>
         </div>
         <nav className="footer-links" aria-label="Links institucionais">
