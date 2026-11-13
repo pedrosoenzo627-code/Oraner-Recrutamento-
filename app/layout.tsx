@@ -3,11 +3,18 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Oraner Technologies — Tecnologia em construção",
+    default: "Oraner Technologies | Site oficial",
     template: "%s | Oraner Technologies",
   },
-  description: "Conheça os projetos de software e dispositivos em desenvolvimento pela Oraner Technologies.",
+  description: "Site oficial da Oraner Technologies: conheça nossos projetos, acompanhe novidades e veja o que está em desenvolvimento.",
   applicationName: "Oraner Technologies",
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: "Oraner Technologies",
+    title: "Oraner Technologies | Site oficial",
+    description: "Projetos de tecnologia em desenvolvimento, comunicados oficiais e informações sobre a Oraner.",
+  },
   robots: { index: true, follow: true },
 };
 

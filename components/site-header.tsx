@@ -8,7 +8,7 @@ export function Brand() {
       <span className="brand-mark" aria-hidden="true">
         <Image src="/images/oraner-logo.jpg" alt="" fill sizes="34px" priority />
       </span>
-      <span>oraner<span className="brand-sub">TECHNOLOGIES</span></span>
+      <span>Oraner<span className="brand-sub">TECHNOLOGIES</span></span>
     </Link>
   );
 }
