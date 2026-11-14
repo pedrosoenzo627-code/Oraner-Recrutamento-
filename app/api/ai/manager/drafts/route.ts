@@ -87,7 +87,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "O Gemini não conseguiu gerar um rascunho válido. Reformule o assunto e tente novamente." }, { status: 502 });
   }
 
-  let imageUrl: string | null = null;
+  let imagePath: string | null = null;
   let imageWarning: string | null = null;
 
   if (parsed.data.generateImage) {
@@ -113,7 +113,7 @@ export async function POST(request: Request) {
         upsert: false,
       });
       if (upload.error) throw new Error("IMAGE_UPLOAD_FAILED");
-      imageUrl = admin.storage.from("oraner-public-assets").getPublicUrl(filePath).data.publicUrl;
+      imagePath = filePath;
     } catch {
       imageWarning = "O texto foi salvo, mas a imagem não pôde ser gerada ou armazenada. Confira o modelo de imagem, a quota Gemini e a migration do Supabase.";
     }
@@ -126,13 +126,28 @@ export async function POST(request: Request) {
     excerpt: campaign.excerpt,
     body: campaign.body,
     image_prompt: campaign.image_prompt,
-    image_path: imageUrl,
+    image_path: imagePath,
     status: "pending_approval",
-  }).select("id, topic, title, excerpt, body, image_url, status, created_at").single();
+  }).select("id, topic, title, excerpt, body, image_path, status, created_at").single();
 
   if (saveError || !draft) {
+    if (imagePath) await admin.storage.from("oraner-ai-drafts").remove([imagePath]);
     return NextResponse.json({ error: "Não foi possível salvar o rascunho. Execute a migration do Gestor IA no Supabase." }, { status: 503 });
   }
+
+  const { data: signedImage } = imagePath
+    ? await admin.storage.from("oraner-ai-drafts").createSignedUrl(imagePath, 3600)
+    : { data: null };
+  const draftForClient = {
+    id: draft.id,
+    topic: draft.topic,
+    title: draft.title,
+    excerpt: draft.excerpt,
+    body: draft.body,
+    image_url: signedImage?.signedUrl ?? null,
+    status: draft.status,
+    created_at: draft.created_at,
+  };
 
   await admin.from("audit_events").insert({
     actor_id: user.id,
@@ -141,5 +156,5 @@ export async function POST(request: Request) {
     entity_id: draft.id,
   });
 
-  return NextResponse.json({ draft, imageWarning }, { status: 201 });
+  return NextResponse.json({ draft: draftForClient, imageWarning }, { status: 201 });
 }
