@@ -43,6 +43,10 @@ CREATE TABLE IF NOT EXISTS public.ai_manager_drafts (
   approved_by UUID REFERENCES auth.users(id) ON DELETE SET NULL
 );
 
+-- Keep this migration safe to re-run if an earlier draft of the table was created.
+ALTER TABLE public.ai_manager_drafts
+  ADD COLUMN IF NOT EXISTS image_path TEXT;
+
 CREATE INDEX IF NOT EXISTS ai_manager_drafts_created_at_idx
   ON public.ai_manager_drafts (created_at DESC);
 CREATE INDEX IF NOT EXISTS ai_manager_drafts_status_idx
