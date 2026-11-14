@@ -12,10 +12,17 @@ export default async function CatalogPage() {
   const { data: canManage } = await supabase.rpc("can_manage_public_content");
   if (!canManage) redirect("/workplace");
 
-  const { data } = await supabase
+  const withImages = await supabase
     .from("products")
-    .select("id, name, category, summary, status, price_cents, currency, stripe_product_id")
+    .select("id, name, category, summary, status, price_cents, currency, stripe_product_id, image_url")
     .order("created_at", { ascending: false });
+
+  const data = withImages.error
+    ? (await supabase
+        .from("products")
+        .select("id, name, category, summary, status, price_cents, currency, stripe_product_id")
+        .order("created_at", { ascending: false })).data
+    : withImages.data;
 
   return (
     <main className="workplace-shell">
