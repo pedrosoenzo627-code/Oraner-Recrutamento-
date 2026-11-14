@@ -18,10 +18,11 @@ export function SiteHeader() {
     <header className="site-header">
       <Brand />
       <nav className="site-nav" aria-label="Navegação principal">
-        <a href="#projetos">Projetos</a>
-        <a href="#novidades">Novidades</a>
-        <a href="#loja">Loja</a>
-        <a href="#sobre">Sobre</a>
+        <Link href="/#projetos">Projetos</Link>
+        <Link href="/#novidades">Novidades</Link>
+        <Link href="/#loja">Loja</Link>
+        <Link href="/#sobre">Sobre</Link>
+        <Link href="/assistente">Oraner IA</Link>
       </nav>
       <Link className="header-action" href="/workplace/login">
         Workplace <ArrowUpRight size={14} aria-hidden="true" />
