@@ -12,6 +12,7 @@ const productSchema = z.object({
   summary: z.string().trim().min(8).max(240),
   description: z.string().trim().max(4000).default(""),
   priceCents: z.number().int().positive().max(100_000_000),
+  imageUrl: z.string().trim().url().refine((value) => value.startsWith("https://"), "Use uma URL HTTPS.").or(z.literal("")).optional().default(""),
 });
 
 function slugify(value: string) {
@@ -61,8 +62,14 @@ export async function POST(request: Request) {
   };
 
   if (!existing) {
-    const { error: insertError } = await supabase.from("products").insert(productRow);
-    if (insertError) return NextResponse.json({ error: "Não foi possível salvar o rascunho no catálogo." }, { status: 400 });
+    const rowToInsert = input.imageUrl ? { ...productRow, image_url: input.imageUrl } : productRow;
+    const { error: insertError } = await supabase.from("products").insert(rowToInsert);
+    if (insertError) {
+      const message = input.imageUrl
+        ? "A coluna de imagens ainda não existe no Supabase. Execute a migration supabase/migrations/202611130001_oraner_ai_manager.sql e tente novamente."
+        : "Não foi possível salvar o rascunho no catálogo.";
+      return NextResponse.json({ error: message }, { status: 400 });
+    }
   }
 
   try {
