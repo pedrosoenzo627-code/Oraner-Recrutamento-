@@ -21,7 +21,7 @@ export default async function AiManagerPage() {
   const admin = createAdminClient();
   const [{ data: drafts }, { data: reports }] = await Promise.all([
     admin.from("ai_manager_drafts")
-      .select("id, topic, title, excerpt, body, image_url, status, created_at")
+      .select("id, topic, title, excerpt, body, image_path, status, created_at")
       .order("created_at", { ascending: false })
       .limit(30),
     admin.from("ai_weekly_reports")
@@ -29,6 +29,12 @@ export default async function AiManagerPage() {
       .order("created_at", { ascending: false })
       .limit(8),
   ]);
+
+  const draftsWithSignedImages = await Promise.all((drafts ?? []).map(async (draft) => {
+    if (!draft.image_path) return { ...draft, image_url: null };
+    const { data } = await admin.storage.from("oraner-ai-drafts").createSignedUrl(draft.image_path, 3600);
+    return { ...draft, image_url: data?.signedUrl ?? null };
+  }));
 
   return (
     <main className="workplace-shell">
@@ -44,7 +50,7 @@ export default async function AiManagerPage() {
           <a href="/workplace/gestor-ia">Gestor IA</a>
         </nav>
         <AiManager
-          initialDrafts={drafts ?? []}
+          initialDrafts={draftsWithSignedImages}
           reports={reports ?? []}
           geminiConfigured={isGeminiConfigured()}
         />
