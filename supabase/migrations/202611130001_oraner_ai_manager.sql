@@ -1,4 +1,4 @@
--- Optional artwork fields for public products and announcements.
+-- Optional artwork fields for products and public announcements.
 ALTER TABLE public.products ADD COLUMN IF NOT EXISTS image_url TEXT;
 ALTER TABLE public.announcements ADD COLUMN IF NOT EXISTS image_url TEXT;
 
@@ -25,7 +25,7 @@ BEGIN
   END IF;
 END $$;
 
--- Private queue of AI-generated advertising drafts awaiting a human decision.
+-- AI-created ads remain private until they are approved for public publication.
 CREATE TABLE IF NOT EXISTS public.ai_manager_drafts (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   created_by UUID REFERENCES auth.users(id) ON DELETE SET NULL,
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS public.ai_manager_drafts (
   excerpt TEXT NOT NULL,
   body TEXT NOT NULL,
   image_prompt TEXT,
-  image_url TEXT,
+  image_path TEXT,
   status TEXT NOT NULL DEFAULT 'pending_approval'
     CHECK (status IN ('pending_approval', 'published', 'rejected')),
   announcement_id UUID REFERENCES public.announcements(id) ON DELETE SET NULL,
@@ -48,7 +48,6 @@ CREATE INDEX IF NOT EXISTS ai_manager_drafts_created_at_idx
 CREATE INDEX IF NOT EXISTS ai_manager_drafts_status_idx
   ON public.ai_manager_drafts (status);
 
--- Weekly reports contain database-backed metrics and an AI-written explanation.
 CREATE TABLE IF NOT EXISTS public.ai_weekly_reports (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   week_key TEXT NOT NULL UNIQUE,
@@ -65,16 +64,11 @@ CREATE INDEX IF NOT EXISTS ai_weekly_reports_created_at_idx
 ALTER TABLE public.ai_manager_drafts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.ai_weekly_reports ENABLE ROW LEVEL SECURITY;
 
--- Only the server's service-role client reads/writes these private tables.
--- The public bucket exposes generated images by URL; uploads are performed server-side.
+-- Generated draft imagery is private. It is copied to the public bucket only after approval.
 INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-VALUES (
-  'oraner-public-assets',
-  'oraner-public-assets',
-  TRUE,
-  10485760,
-  ARRAY['image/png', 'image/jpeg', 'image/webp']
-)
+VALUES
+  ('oraner-ai-drafts', 'oraner-ai-drafts', FALSE, 10485760, ARRAY['image/png', 'image/jpeg', 'image/webp']),
+  ('oraner-public-assets', 'oraner-public-assets', TRUE, 10485760, ARRAY['image/png', 'image/jpeg', 'image/webp'])
 ON CONFLICT (id) DO UPDATE
 SET public = EXCLUDED.public,
     file_size_limit = EXCLUDED.file_size_limit,
