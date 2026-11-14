@@ -47,7 +47,8 @@ export function OranerAiAssistant() {
         setError("O assistente retornou uma resposta vazia. Tente novamente.");
         return;
       }
-      setMessages((current) => [...current, { role: "assistant", content: result.reply }].slice(-12));
+      const assistantReply: ChatMessage = { role: "assistant", content: result.reply };
+      setMessages((current) => [...current, assistantReply].slice(-12));
     } catch {
       setError("Falha de conexão. Verifique sua internet e tente novamente.");
     } finally {
