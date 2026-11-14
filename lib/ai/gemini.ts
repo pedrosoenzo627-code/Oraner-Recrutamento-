@@ -82,7 +82,13 @@ export async function generateGeminiImage(prompt: string) {
   const response = await callGemini({
     model: process.env.GEMINI_IMAGE_MODEL || "gemini-3.1-flash-image",
     input: prompt,
-  }, 55_000);
+    response_format: {
+      type: "image",
+      mime_type: "image/png",
+      aspect_ratio: "16:9",
+      image_size: "1K",
+    },
+  }, 40_000);
 
   const image = response.output_image;
   if (image?.data) {
