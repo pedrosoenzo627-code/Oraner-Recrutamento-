@@ -34,7 +34,7 @@ export async function PATCH(request: Request, context: RouteContext) {
 
   const admin = createAdminClient();
   const { data: draft, error: lookupError } = await admin.from("ai_manager_drafts")
-    .select("id, title, excerpt, body, image_url, status")
+    .select("id, title, excerpt, body, image_path, status")
     .eq("id", id)
     .maybeSingle();
 
@@ -49,8 +49,38 @@ export async function PATCH(request: Request, context: RouteContext) {
       .eq("id", id)
       .eq("status", "pending_approval");
     if (error) return NextResponse.json({ error: "Não foi possível arquivar o rascunho." }, { status: 500 });
+    if (draft.image_path) {
+      await admin.storage.from("oraner-ai-drafts").remove([draft.image_path]);
+    }
     await admin.from("audit_events").insert({ actor_id: user.id, action: "ai_campaign.rejected", entity_type: "ai_manager_draft", entity_id: id });
     return NextResponse.json({ id, status: "rejected" });
+  }
+
+  let publishedImageUrl: string | null = null;
+  let publicImagePath: string | null = null;
+
+  if (draft.image_path) {
+    const { data: imageBlob, error: downloadError } = await admin.storage
+      .from("oraner-ai-drafts")
+      .download(draft.image_path);
+    if (downloadError || !imageBlob) {
+      return NextResponse.json({ error: "Não foi possível carregar a imagem privada do rascunho." }, { status: 500 });
+    }
+
+    const extension = draft.image_path.split(".").pop()?.toLowerCase() || "png";
+    const mimeType = extension === "jpg" || extension === "jpeg"
+      ? "image/jpeg"
+      : extension === "webp" ? "image/webp" : "image/png";
+    publicImagePath = "announcements/" + crypto.randomUUID() + "." + (extension === "jpeg" ? "jpg" : extension);
+    const upload = await admin.storage.from("oraner-public-assets").upload(
+      publicImagePath,
+      Buffer.from(await imageBlob.arrayBuffer()),
+      { contentType: mimeType, cacheControl: "31536000", upsert: false },
+    );
+    if (upload.error) {
+      return NextResponse.json({ error: "Não foi possível publicar a imagem. Tente novamente." }, { status: 500 });
+    }
+    publishedImageUrl = admin.storage.from("oraner-public-assets").getPublicUrl(publicImagePath).data.publicUrl;
   }
 
   const slug = makeSlug(draft.title, draft.id);
@@ -59,13 +89,14 @@ export async function PATCH(request: Request, context: RouteContext) {
     slug,
     excerpt: draft.excerpt,
     body: draft.body,
-    image_url: draft.image_url,
+    image_url: publishedImageUrl,
     status: "published",
     publish_at: new Date().toISOString(),
     created_by: user.id,
   }).select("id").single();
 
   if (insertError || !announcement) {
+    if (publicImagePath) await admin.storage.from("oraner-public-assets").remove([publicImagePath]);
     return NextResponse.json({ error: "Não foi possível publicar. Confira se a migration de imagens e o catálogo de comunicados estão atualizados." }, { status: 500 });
   }
 
@@ -81,9 +112,11 @@ export async function PATCH(request: Request, context: RouteContext) {
 
   if (updateError) {
     await admin.from("announcements").delete().eq("id", announcement.id);
+    if (publicImagePath) await admin.storage.from("oraner-public-assets").remove([publicImagePath]);
     return NextResponse.json({ error: "A publicação foi revertida porque o estado do rascunho mudou. Atualize a página." }, { status: 409 });
   }
 
+  if (draft.image_path) await admin.storage.from("oraner-ai-drafts").remove([draft.image_path]);
   await admin.from("audit_events").insert({ actor_id: user.id, action: "ai_campaign.published", entity_type: "announcement", entity_id: announcement.id });
   return NextResponse.json({ id, announcementId: announcement.id, status: "published" });
 }
