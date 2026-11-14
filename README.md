@@ -90,3 +90,20 @@ Estamos buscando orientação sobre iniciativas educacionais, comunidades de tec
 *Inovação • Desempenho • Liberdade*
 
 <sub>Este repositório é informativo. Não constitui oferta de emprego, contrato, promessa de remuneração, investimento ou participação societária. A participação externa dependerá de regras, licenças e orientações adequadas previamente definidas.</sub>
+
+
+## Integração Gemini e gestão de conteúdo
+
+O assistente público está em `/assistente`. O painel privado do Gestor IA está em `/workplace/gestor-ia` e exige perfil autorizado no Workplace.
+
+A API Gemini usa a API Interactions atual. Configure `GEMINI_API_KEY` (segredo somente do servidor). Os modelos padrão são `gemini-3.8-flash` para texto e `gemini-3.1-flash-image` para imagens. O Gestor IA cria rascunhos e imagens; um owner ou gestor precisa aprovar antes que um comunicado apareça publicamente.
+
+**O Gemini não recebe as chaves do Supabase ou Stripe, não altera cargos e não edita nem publica código do site por conta própria.** Recomendações de melhoria aparecem nos relatórios para revisão humana.
+
+## Relatório semanal automático
+
+O arquivo `vercel.json` agenda `/api/cron/weekly-report` toda segunda-feira às 12:00 UTC (09:00 no horário de Brasília). Configure uma variável secreta `CRON_SECRET` na Vercel; o endpoint recusa chamadas sem o cabeçalho de autorização esperado. O relatório usa contagens reais de produtos, comunicados e campanhas do Supabase. Visitas, cliques e vendas não são estimados enquanto essas métricas não estiverem integradas.
+
+## Migration do Gestor IA e imagens
+
+Execute o conteúdo de `supabase/migrations/202611130001_oraner_ai_manager.sql` uma vez no SQL Editor do Supabase para criar as colunas de imagem, as tabelas privadas de rascunhos/relatórios e o bucket de imagens geradas.
