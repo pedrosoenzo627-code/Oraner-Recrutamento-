@@ -11,6 +11,7 @@ type PublicProduct = {
   summary: string;
   price_cents: number | null;
   currency: string;
+  image_url?: string | null;
 };
 
 type PublicAnnouncement = {
@@ -19,6 +20,7 @@ type PublicAnnouncement = {
   slug: string;
   excerpt: string;
   publish_at: string | null;
+  image_url?: string | null;
 };
 
 const projects = [
@@ -93,8 +95,10 @@ export function LandingPage({ products, announcements }: { products: PublicProdu
                   <span className="status-chip">Comunicado</span>
                   {announcement.publish_at && <time className="announcement-date" dateTime={announcement.publish_at}>{new Intl.DateTimeFormat("pt-BR", { dateStyle: "medium" }).format(new Date(announcement.publish_at))}</time>}
                 </div>
-                <h3>{announcement.title}</h3>
+                {announcement.image_url?.startsWith("https://") && <Link href={"/novidades/" + encodeURIComponent(announcement.slug)}><img className="product-image announcement-image" src={announcement.image_url} alt="" loading="lazy" /></Link>}
+                <h3><Link href={"/novidades/" + encodeURIComponent(announcement.slug)}>{announcement.title}</Link></h3>
                 <p>{announcement.excerpt}</p>
+                <Link className="text-link product-detail-link" href={"/novidades/" + encodeURIComponent(announcement.slug)}>Ler comunicado <ArrowRight size={13} aria-hidden="true" /></Link>
               </article>
             ))}
           </div>
@@ -117,11 +121,17 @@ export function LandingPage({ products, announcements }: { products: PublicProdu
         {products.length ? (
           <div className="product-grid">
             {products.map((product) => (
-              <article className="product-card" key={product.id}>
+              <article className="product-card product-card-linked" key={product.id}>
+                {product.image_url?.startsWith("https://") && (
+                  <Link className="product-image-link" href={"/produtos/" + encodeURIComponent(product.slug)}>
+                    <img className="product-image" src={product.image_url} alt={product.name} loading="lazy" />
+                  </Link>
+                )}
                 <span className="status-chip">{product.category}</span>
-                <h3>{product.name}</h3>
+                <h3><Link href={"/produtos/" + encodeURIComponent(product.slug)}>{product.name}</Link></h3>
                 <p>{product.summary}</p>
                 {product.price_cents !== null && <div className="product-price">{formatPrice(product.price_cents, product.currency)}</div>}
+                <Link className="text-link product-detail-link" href={"/produtos/" + encodeURIComponent(product.slug)}>Ver detalhes <ArrowRight size={13} aria-hidden="true" /></Link>
               </article>
             ))}
           </div>
