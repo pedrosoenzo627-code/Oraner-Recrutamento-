@@ -6,6 +6,7 @@ import { isSameOriginRequest } from "@/lib/security/request";
 import { generateGeminiImage, generateGeminiText } from "@/lib/ai/gemini";
 
 export const runtime = "nodejs";
+export const maxDuration = 60;
 
 const requestSchema = z.object({
   topic: z.string().trim().min(5).max(500),
@@ -72,7 +73,7 @@ export async function POST(request: Request) {
     const raw = await generateGeminiText(
       "Assunto solicitado: " + parsed.data.topic + "\n\nContexto público disponível:\n" + publicContext,
       systemInstruction,
-      { timeoutMs: 40_000, maxOutputTokens: 1200 },
+      { timeoutMs: 18_000, maxOutputTokens: 1200 },
     );
     campaign = parseCampaign(raw);
   } catch (error) {
@@ -106,7 +107,7 @@ export async function POST(request: Request) {
       }
 
       const filePath = "ai-campaigns/" + crypto.randomUUID() + "." + extension;
-      const upload = await admin.storage.from("oraner-public-assets").upload(filePath, bytes, {
+      const upload = await admin.storage.from("oraner-ai-drafts").upload(filePath, bytes, {
         contentType: generated.mimeType,
         cacheControl: "31536000",
         upsert: false,
@@ -125,7 +126,7 @@ export async function POST(request: Request) {
     excerpt: campaign.excerpt,
     body: campaign.body,
     image_prompt: campaign.image_prompt,
-    image_url: imageUrl,
+    image_path: imageUrl,
     status: "pending_approval",
   }).select("id, topic, title, excerpt, body, image_url, status, created_at").single();
 
