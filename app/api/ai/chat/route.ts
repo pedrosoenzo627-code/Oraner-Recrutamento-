@@ -4,6 +4,7 @@ import { isSameOriginRequest } from "@/lib/security/request";
 import { generateGeminiText } from "@/lib/ai/gemini";
 
 export const runtime = "nodejs";
+export const maxDuration = 45;
 
 const schema = z.object({
   messages: z.array(z.object({
