@@ -60,6 +60,7 @@ export default async function WorkplacePage() {
           <Link href="/workplace">Visão geral</Link>
           {canManageContent && <Link href="/workplace/catalog">Catálogo de produtos</Link>}
           {canManageContent && <Link href="/workplace/announcements">Anúncios</Link>}
+          {canManageContent && <Link href="/workplace/gestor-ia">Gestor IA</Link>}
           {profile.access_role === "owner" && <Link href="/workplace/team">Equipe e cargos</Link>}
         </nav>
         <section className="workspace-grid" aria-label="Resumo do conteúdo interno">
